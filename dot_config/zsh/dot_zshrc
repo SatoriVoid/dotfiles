@@ -1,0 +1,41 @@
+# Interactive shells only
+[[ -o interactive ]] || return
+
+source_if_exists() {
+  [[ -r "$1" ]] && source "$1"
+}
+
+case "$OSTYPE" in
+  darwin*) export ZSH_OS="macos" ;;
+  linux*)  export ZSH_OS="linux" ;;
+  *)       export ZSH_OS="unknown" ;;
+esac
+
+# Fallback for non-login interactive shells (e.g. plain `zsh -i`)
+if ! command -v brew >/dev/null 2>&1; then
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [[ -x /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+fi
+
+source_if_exists "$ZDOTDIR/env.zsh"
+source_if_exists "$ZDOTDIR/options.zsh"
+source_if_exists "$ZDOTDIR/completion.zsh"
+source_if_exists "$ZDOTDIR/keybindings.zsh"
+source_if_exists "$ZDOTDIR/fzf.zsh"
+source_if_exists "$ZDOTDIR/aliases.zsh"
+source_if_exists "$ZDOTDIR/functions.zsh"
+source_if_exists "$ZDOTDIR/os/$ZSH_OS.zsh"
+source_if_exists "$ZDOTDIR/path.zsh"
+source_if_exists "$ZDOTDIR/plugins.zsh"
+source_if_exists "$ZDOTDIR/local.zsh"
+
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
