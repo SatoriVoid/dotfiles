@@ -1,3 +1,4 @@
 export ZDOTDIR="$HOME/.config/zsh"
 [ -f "$ZDOTDIR/.zshenv" ] && . "$ZDOTDIR/.zshenv"
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+skip_global_compinit=1
