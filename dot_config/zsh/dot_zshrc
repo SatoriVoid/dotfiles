@@ -22,14 +22,14 @@ fi
 
 source_if_exists "$ZDOTDIR/env.zsh"
 source_if_exists "$ZDOTDIR/options.zsh"
+source_if_exists "$ZDOTDIR/path.zsh"
+source_if_exists "$ZDOTDIR/plugins.zsh"
 source_if_exists "$ZDOTDIR/completion.zsh"
 source_if_exists "$ZDOTDIR/keybindings.zsh"
 source_if_exists "$ZDOTDIR/fzf.zsh"
 source_if_exists "$ZDOTDIR/aliases.zsh"
 source_if_exists "$ZDOTDIR/functions.zsh"
 source_if_exists "$ZDOTDIR/os/$ZSH_OS.zsh"
-source_if_exists "$ZDOTDIR/path.zsh"
-source_if_exists "$ZDOTDIR/plugins.zsh"
 source_if_exists "$ZDOTDIR/local.zsh"
 
 if command -v zoxide >/dev/null 2>&1; then
