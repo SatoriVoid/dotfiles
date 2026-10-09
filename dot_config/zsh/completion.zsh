@@ -1,9 +1,9 @@
-autoload -Uz compinit
+#autoload -Uz compinit
 zmodload zsh/complist
 
 [[ -d "$ZDOTDIR/.cache" ]] || mkdir -p "$ZDOTDIR/.cache"
 
-compinit -d "$ZDOTDIR/.cache/zcompdump"
+#compinit -d "$ZDOTDIR/.cache/zcompdump"
 
 zstyle ':completion:*' menu select
 [[ -n "$LS_COLORS" ]] && zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
